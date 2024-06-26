@@ -57,8 +57,8 @@ void save_options(std::string option1, std::string option2)
 
 	if (config_file.is_open())
 	{
-		config_file << "Language=" << option1 << "\n";
-		config_file << "VidMode=" << option2 << "\n";
+		config_file << "Language=" << option1.c_str() << "\n";
+		config_file << "VidMode=" << option2.c_str() << "\n";
 		config_file.close();
 	}
 	else
