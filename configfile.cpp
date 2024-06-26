@@ -21,12 +21,12 @@ std::string get_config_path()
 	#ifdef _WIN32
 		char appdata[MAX_PATH];
 		SHGetFolderPath(NULL, CSIDL_APPDATA, NULL, 0, appdata);
-		path = std::string(appdata) + "\\HoNLauncher\\";
+		path = std::string(appdata) + "\\DisdainLauncher\\";
 	#elif __APPLE__
 		struct passwd *pw = getpwuid(getuid());
-		path = std::string(pw->pw_dir) + "/Library/Preferences/HoNLauncher/";
+		path = std::string(pw->pw_dir) + "/Library/Preferences/DisdainLauncher/";
 	#else
-		path = std::string(getenv("HOME")) + "/.config/HoNLauncher/";
+		path = std::string(getenv("HOME")) + "/.config/DisdainLauncher/";
 	#endif
 	return path;
 }

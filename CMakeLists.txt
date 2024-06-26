@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(GameLauncher)
+project(DisdainLauncher)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -35,12 +35,12 @@ endif()
 
 set(SOURCE_FILES ${SOURCE_FILES} "launcher.cpp" "configfile.cpp" "getexepath.cpp")
 
-add_executable(GameLauncher ${SOURCE_FILES})
-target_link_libraries(GameLauncher ${EXTRA_LIBS})
+add_executable(DisdainLauncher ${SOURCE_FILES})
+target_link_libraries(DisdainLauncher ${EXTRA_LIBS})
 
 if (WIN32)
-	target_sources(GameLauncher PRIVATE GameLauncher.manifest)
-	target_link_options(GameLauncher PRIVATE
+	target_sources(DisdainLauncher PRIVATE DisdainLauncher.manifest)
+	target_link_options(DisdainLauncher PRIVATE
 		$<$<CONFIG:Debug>:${CMAKE_EXE_LINKER_FLAGS_DEBUG}>
 		$<$<CONFIG:Release>:${CMAKE_EXE_LINKER_FLAGS_RELEASE}>
 	)

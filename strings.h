@@ -1,4 +1,4 @@
-#define GAMENAME "Hands of Necromancy"
+#define GAMENAME "DISDAIN"
 #define VIDMODE1 "Vulkan (VkD)"
 #define VIDMODE2 "OpenGL-ES"
 #define VIDMODE3 "Vulkan (GZD)"
