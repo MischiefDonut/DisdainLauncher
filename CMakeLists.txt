@@ -45,3 +45,8 @@ if (WIN32)
 		$<$<CONFIG:Release>:${CMAKE_EXE_LINKER_FLAGS_RELEASE}>
 	)
 endif()
+
+add_custom_command(TARGET DisdainLauncher POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy_if_different
+	${CMAKE_SOURCE_DIR}/assets/disdain-startup.png $<TARGET_FILE_DIR:DisdainLauncher>/startup.png
+)
