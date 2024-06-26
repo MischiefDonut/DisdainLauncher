@@ -29,9 +29,8 @@ elseif(WIN32)
 	list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}")
 	set(EXTRA_LIBS "user32.lib")
 	set(SOURCE_FILES "win32.cpp")
-#	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
-	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE /ENTRY:WinMainCRTStartup")
-
+	set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
+	set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE /ENTRY:WinMainCRTStartup")
 endif()
 
 set(SOURCE_FILES ${SOURCE_FILES} "launcher.cpp" "configfile.cpp" "getexepath.cpp")
@@ -41,4 +40,8 @@ target_link_libraries(GameLauncher ${EXTRA_LIBS})
 
 if (WIN32)
 	target_sources(GameLauncher PRIVATE GameLauncher.manifest)
+	target_link_options(GameLauncher PRIVATE
+		$<$<CONFIG:Debug>:${CMAKE_EXE_LINKER_FLAGS_DEBUG}>
+		$<$<CONFIG:Release>:${CMAKE_EXE_LINKER_FLAGS_RELEASE}>
+	)
 endif()
